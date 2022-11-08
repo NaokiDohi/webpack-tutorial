@@ -52,3 +52,7 @@ import greeting from './modules/greeting'
 console.log('This is index.js')
 greeting()
 ```
+
+```
+% npx webpack --mode development
+```
