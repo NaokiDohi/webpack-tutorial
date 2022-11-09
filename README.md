@@ -76,6 +76,8 @@ greeting()
 </html>
 ```
 
+#### Webpack 設定ファイルの作成
+
 ```
 // webpack.config.js
 const path = require('path');
@@ -83,6 +85,35 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
+    filename: 'output.js',
   },
 };
+
+// src/index.htmlの変更
+<script src="./output.js"></script>
+```
+
+### CSS の適応
+
+```
+% npm install --save-dev css-loader@5.0.1 style-loader@2.0.0
+```
+
+```
+// webpack.config.js outputの下に追記
+module: {
+  rules: [
+    {
+      test: /\.css/,
+      use: [
+        {
+          loader: 'style-loader',
+        },
+        {
+          loader: 'css-loader',
+        },
+      ],
+    },
+  ],
+},
 ```
